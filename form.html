@@ -1,0 +1,87 @@
+<!--1. 表單 <form> -->
+<!-- http://www.w3schools.com/html/html_form_input_types.asp -->
+<!--提供介面，讓使用者輸入表單-->
+<!--交給後端做進一步的處理，然後接收回傳訊息給使用者-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> HTML - Form </title>
+
+    <style>
+        /* 透過改變滑鼠的樣式，告訴使用者目前是否有點選到 cursor */
+        h2{color: rgb(112, 112, 112);}
+        input{border:0;border-bottom: 1px solid rgb(143, 143, 143);padding-left: 2px;}
+        input:invalid{background-color: #eee;}
+        .row{display: block;margin: 2px 0;background: rgba(0, 0, 0,0.2);padding: 2px;}
+        .row label{min-width: 100px;display: inline-block;background: rgba(0, 0, 0,0.3);color: #fff;}
+
+    </style>
+</head>
+
+<body>
+    
+    <!-- 1-1. 製作一份表單-->
+    <!--   a. 標題：通勤工具使用調查-->
+    <!--   b. 在<body>裡面放入一個表單<form>-->
+    <!--   c. 在表單<form>內加入 姓名 輸入欄位<input type="text">-->
+    <!--   d. 在表單<form>內加入 電話 輸入欄位<input type="text">-->
+
+
+    <!-- 1-2. 加入 年紀 <input type="radio">-->
+    <!--  id：識別某個HTML文件上的元素-->
+    <!--  class：HTML標籤的分組-->
+    <!--  name：伺服器端根據name取得值；做為radio、checkbox的分組-->
+
+    <!-- 1-3. 加入 職業 <input type="radio"> ，步驟和 1-3 類似-->
+
+    <!-- 1-4. 加入 交通工具 <input type="checkbox"> -->
+
+    <!-- 1-5. 加入 提交  <input type="submit"> -->
+    <!--   a. 比較 <form onsubmit=""> 事件 和 <input type="submit" onclick="" 事件> -->
+    <!--   b. 先確認事件有綁定成功，後面等到javascript章節，我們再回頭撰寫事件和元素取值-->
+    <h2>通勤工具使用調查</h2>
+    <form action="" id="myForm">
+        <!-- <input type="tel" placeholder="http://5678" maxlength="10" pattern="[0-9]{2}-[0-9]{7}"> -->
+        <div class="row">
+            <label>姓名</label>
+            <input type="text" name="name" placeholder="input name">
+        </div>
+        <div class="row">
+            <label>*電話</label>
+            <input type="tel" name="tel" pattern="[0-9]{2}-[0-9]{7}" placeholder="input telephone" required>
+            <span>Format:04-1234567</span>
+        </div>
+        <div class="row">
+            <label>年紀</label>
+            <input type="radio" name="age" value="20-30"><span>20-30</span>
+            <input type="radio" name="age" value="30-40"><span>30-40</span>
+            <input type="radio" name="age" value="40-50"><span>40-50</span>
+            <input type="radio" name="age" value="50以上"><span>50以上</span>
+        </div>
+        <div class="row">
+            <label>職業</label>
+            <input type="radio" name="career" value="student"><span>學生</span>
+            <input type="radio" name="career" value="teacher"><span>教師</span>
+        </div>
+        <div class="row">
+            <label>交通工具</label>
+            <input type="checkbox" name="traffic" value="byke"><span>腳踏車</span>
+            <input type="checkbox" name="traffic" value="moto"><span>機車</span>
+            <input type="checkbox" name="traffic" value="ship"><span>船</span>
+            <input type="checkbox" name="traffic" value="other"><span>其他</span>
+        </div>
+        <div class="row">
+            <button type="submit" onclick="sctionMyform()">提交</button>
+        </div>
+    </form>
+    <script type="text/javascript">
+        function sctionMyform(){
+            var myFrom = document.getElementById("myForm");
+            alert(myFrom.action);            
+        }
+    </script>
+</body>
+
+</html>
